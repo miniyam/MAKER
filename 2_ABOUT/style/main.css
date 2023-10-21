@@ -1,0 +1,556 @@
+@charset "UTF-8";
+*, html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul, li {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@font-face {
+  font-family: "PartialSansKR-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NanumBarunGothic";
+  font-style: normal;
+  font-weight: 400;
+  src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
+  src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix") format("embedded-opentype"), url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff") format("woff"), url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf") format("truetype");
+}
+body {
+  color: #fff;
+  font-family: "NanumBarunGothic";
+}
+
+/************header ************/
+header {
+  background: black;
+  position: fixed;
+  width: 100%; /*쪼그라지지않게 지정*/
+  z-index: 100;
+}
+
+.header_in {
+  max-width: 1240px;
+  margin: auto;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  background: black;
+  color: #fff;
+}
+.header_in h1 span {
+  font-size: 24px;
+  font-weight: 900;
+}
+
+@media (max-width: 774px) {
+  nav.active {
+    right: 0;
+  }
+}
+nav ul::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+nav ul li {
+  float: left;
+}
+nav ul li a {
+  display: block;
+  padding: 15px;
+  font-size: 14px;
+}
+nav ul li a::after {
+  display: block;
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: #fff;
+  margin: -2px auto 0;
+  transition: 0.3s ease-out;
+}
+nav ul li a::after:hover {
+  width: 100%;
+}
+@media (max-width: 774px) {
+  nav ul li a {
+    padding: 20px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 774px) {
+  nav ul li {
+    float: none;
+  }
+}
+@media (max-width: 774px) {
+  nav ul {
+    padding: 100px 0 0 30px;
+  }
+}
+@media (max-width: 774px) {
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh; /* 헤더가 막혀있을 때*/
+    width: 300px;
+    background: #fff;
+    z-index: 101;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    transition: 0.5s ease-in;
+    color: #000;
+  }
+}
+
+.trigger {
+  display: none;
+}
+@media (max-width: 774px) {
+  .trigger {
+    display: block;
+  }
+}
+@media (max-width: 774px) {
+  .trigger i {
+    font-size: 20px;
+  }
+}
+
+.close {
+  display: none;
+}
+@media (max-width: 774px) {
+  .close {
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+@media (max-width: 774px) {
+  .close i {
+    font-size: 24px;
+  }
+}
+
+/************ section ************/
+.main_text_wrap {
+  opacity: 0;
+  animation: opacity 2s forwards;
+  animation-delay: 1s;
+}
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  } /* 시작 */
+  100% {
+    opacity: 1;
+  } /* 끝 */
+}
+
+.about_character {
+  opacity: 0;
+  animation: opacity 4.5s forwards;
+  animation-delay: 3s;
+}
+
+#s1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: black;
+  height: 100vh;
+}
+
+.main_text {
+  position: absolute;
+  top: 25%;
+  left: 48%;
+  transform: translate(-29vw, -60%); /* 폰트 위치*/
+  color: #fff;
+  white-space: nowrap;
+}
+@media (max-width: 912px) {
+  .main_text {
+    top: 20%;
+    transform: translate(-40vw, -50%);
+  }
+}
+@media (max-width: 768px) {
+  .main_text {
+    top: 15%;
+    transform: translate(-25vw, -50%);
+  }
+}
+@media (max-width: 540px) {
+  .main_text {
+    top: 18%;
+    transform: translate(-23vw, -100%);
+  }
+}
+@media (max-width: 415px) {
+  .main_text {
+    top: 14%;
+    transform: translate(-30vw, -50%);
+  }
+}
+.main_text h2 {
+  font-size: 3em;
+  margin-bottom: 50px;
+  margin-bottom: clamp(15px, 5vw, 20px);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  font-size: clamp(36px, 12vw, 60px);
+  font-family: "PartialSansKR-Regular";
+}
+@media (max-width: 540px) {
+  .main_text h2 {
+    font-size: clamp(26px, 12vw, 40px);
+  }
+}
+@media (max-width: 376px) {
+  .main_text h2 {
+    font-size: clamp(20px, 12vw, 30px);
+  }
+}
+.main_text p {
+  font-size: clamp(12px, 4vw, 17px);
+}
+@media (max-width: 768px) {
+  .main_text p {
+    display: none;
+  }
+}
+
+/****** about_wrap ******/
+.about_wrap {
+  margin-top: 170px;
+}
+.about_wrap ul {
+  display: flex;
+  -moz-column-gap: 70px;
+       column-gap: 70px;
+}
+@media (max-width: 1300px) {
+  .about_wrap ul {
+    -moz-column-gap: 40px;
+         column-gap: 40px;
+  }
+}
+@media (max-width: 912px) {
+  .about_wrap ul {
+    -moz-column-gap: 30px;
+         column-gap: 30px;
+  }
+}
+@media (max-width: 768px) {
+  .about_wrap ul {
+    flex-direction: column;
+    transform: translateY(-40px);
+  }
+}
+
+.about_layout {
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .about_layout {
+    margin-top: 22px;
+  }
+}
+@media (max-width: 540px) {
+  .about_layout {
+    margin-top: 15px;
+  }
+}
+.about_layout:hover div {
+  transform: scale(1.08);
+}
+.about_layout div {
+  display: block;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  width: 280px;
+  height: 280px;
+  transition: 0.3s;
+}
+@media (max-width: 1300px) {
+  .about_layout div {
+    width: 250px;
+    height: 250px;
+  }
+}
+@media (max-width: 912px) {
+  .about_layout div {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media (max-width: 768px) {
+  .about_layout div {
+    width: 180px;
+    height: 180px;
+  }
+}
+@media (max-width: 540px) {
+  .about_layout div {
+    width: 150px;
+    height: 150px;
+  }
+}
+@media (max-width: 415px) {
+  .about_layout div {
+    width: 170px;
+    height: 170px;
+  }
+}
+@media (max-width: 376px) {
+  .about_layout div {
+    width: 130px;
+    height: 130px;
+  }
+}
+.about_layout div.about_img {
+  background: url(../img/about_img.png) center center/cover;
+}
+.about_layout div.about_img2 {
+  background: #E3E4E5 url(../img/about_img2.png) center center/cover;
+}
+.about_layout div.about_img3 {
+  background: url(../img/about_img3.png) center center/cover;
+}
+.about_layout p {
+  font-family: "PartialSansKR-Regular";
+  margin: 20px 0;
+  font-size: 1.6em;
+  letter-spacing: 3px;
+}
+@media (max-width: 912px) {
+  .about_layout p {
+    margin: 20px 0;
+    font-size: 1.6em;
+  }
+}
+@media (max-width: 768px) {
+  .about_layout p {
+    margin: 10px 0;
+    font-size: 1.5em;
+  }
+}
+@media (max-width: 540px) {
+  .about_layout p {
+    margin: 5px 0;
+    font-size: 1em;
+  }
+}
+@media (max-width: 415px) {
+  .about_layout p {
+    margin: 10px 0;
+  }
+}
+@media (max-width: 375px) {
+  .about_layout p {
+    margin: 5px 0;
+  }
+}
+.about_layout p .job {
+  font-size: 0.5em;
+  margin-left: 10px;
+  font-family: "NanumBarunGothic";
+  letter-spacing: normal;
+}
+.about_layout .keyword span {
+  font-family: "NanumBarunGothic";
+  font-size: 0.9em;
+  line-height: 20px;
+  padding: 0 3px;
+}
+@media (max-width: 768px) {
+  .about_layout .keyword span {
+    display: none;
+  }
+}
+
+/************ about_Pop ************/
+.dark {
+  position: fixed;
+  display: none;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  inset: 0; /* 상위요소까지의 거리 설정, 일종의 margin 설정 */
+}
+
+.aboutPop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 나 자신의 위치 */
+  z-index: 11;
+  width: 50%;
+  min-width: 320px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  display: none;
+}
+.aboutPop .Pop_img1 {
+  width: 220px;
+}
+@media (max-width: 1035px) {
+  .aboutPop .Pop_img1 {
+    margin-bottom: 20px;
+    width: 130px;
+  }
+}
+@media (max-width: 376px) {
+  .aboutPop .Pop_img1 {
+    width: 100px;
+  }
+}
+.aboutPop .Pop_img2 {
+  height: 450px;
+}
+@media (max-width: 1035px) {
+  .aboutPop .Pop_img2 {
+    margin-bottom: 20px;
+    height: 300px;
+  }
+}
+@media (max-width: 376px) {
+  .aboutPop .Pop_img2 {
+    height: 200px;
+  }
+}
+.aboutPop .Pop_img3 {
+  height: 450px;
+}
+@media (max-width: 1035px) {
+  .aboutPop .Pop_img3 {
+    margin-bottom: 20px;
+    height: 300px;
+  }
+}
+@media (max-width: 376px) {
+  .aboutPop .Pop_img3 {
+    height: 200px;
+  }
+}
+.aboutPop button {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+.aboutPop button .icon_close {
+  width: 24px;
+  height: 24px;
+  line-height: 0;
+  display: block;
+  font-size: 1px;
+  color: transparent;
+  background: url("/img/ico_close.png") no-repeat center center/contain;
+}
+
+.aboutPop_con {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+}
+@media (max-width: 1035px) {
+  .aboutPop_con {
+    flex-direction: column;
+  }
+}
+.aboutPop_con p {
+  padding: 40px 20px;
+  color: #fff;
+  line-height: 22px;
+  background: #000;
+  width: 220px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.intro_wrap {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.intro_wrap .intro {
+  color: #000;
+  background: none;
+  font-family: "PartialSansKR-Regular";
+  letter-spacing: 3.5px;
+  font-size: 2em;
+  text-align: center;
+  font-weight: 600;
+}
+.intro_wrap p {
+  text-align: center;
+}/*# sourceMappingURL=main.css.map */
